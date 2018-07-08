@@ -14,6 +14,6 @@
 
 ### Some possible solutions for improvement:
 - Manaully alignment.
-- Data augmentation, e.g., Random crop.
+- Data augmentation, *e.g., Random crop.
 - Ensemble different models.
 - Metric learning methods.
