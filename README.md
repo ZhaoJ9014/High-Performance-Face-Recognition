@@ -13,19 +13,19 @@ This repository provides several high performance models for unconstrained / lar
 * SOTA performance on 
 
 
-  * MS-Celeb-1M (Challenge1 Hard Set Coverage@P=0.95: 79.10%; Challenge1 Random Set Coverage@P=0.95: 87.50%; Challenge2 Base Set Top 1 Accuracy: 99.74%; Challenge2 Novel Set Coverage@P=0.99: 99.01%)
+    * MS-Celeb-1M (Challenge1 Hard Set Coverage@P=0.95: 79.10%; Challenge1 Random Set Coverage@P=0.95: 87.50%; Challenge2 Development Set Coverage@P=0.99: 100.00%; Challenge2 Base Set Top 1 Accuracy: 99.74%; Challenge2 Novel Set Coverage@P=0.99: 99.01%)
 
 
-IJB-A
+    * IJB-A
 
 
-Labeled Faces in the Wild (LFW)
+    * Labeled Faces in the Wild (LFW)
 
 
-Celebrities in Frontal-Profile (CFP)
+    * Celebrities in Frontal-Profile (CFP)
 
 
-CMU Multi-PIE
+    * CMU Multi-PIE
 
 
 ### Citation
