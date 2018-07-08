@@ -1,0 +1,1 @@
+/home/user/MS-Celeb-1M/caffe/build/tools/extract_features_txt.bin /home/user/MS-Celeb-1M/GoogleNet_BN/GoogleNet_bn_face_256_53317_iter_300000.caffemodel /home/user/MS-Celeb-1M/GoogleNet_BN/GoogleNet_bn_face_256_53317_deploy.prototxt pool5/7x7_s1 /home/user/MS-Celeb-1M/GoogleNet_BN/features/GoogleNet_BN_Dev_NovelSet_pool5.txt 157 GPU 1
