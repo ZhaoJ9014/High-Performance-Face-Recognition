@@ -13,19 +13,19 @@ This repository provides several high performance models for unconstrained / lar
 * SOTA performance on 
 
 
-    * MS-Celeb-1M (Challenge1 Hard Set Coverage@P=0.95 %: 79.10; Challenge1 Random Set Coverage@P=0.95 %: 87.50; Challenge2 Development Set Coverage@P=0.99 %: 100.00; Challenge2 Base Set Top 1 Accuracy %: 99.74; Challenge2 Novel Set Coverage@P=0.99 %: 99.01)
+    * MS-Celeb-1M (Challenge1 Hard Set Coverage@P=0.95: 79.10%; Challenge1 Random Set Coverage@P=0.95: 87.50%; Challenge2 Development Set Coverage@P=0.99: 100.00%; Challenge2 Base Set Top 1 Accuracy: 99.74%; Challenge2 Novel Set Coverage@P=0.99: 99.01%)
 
 
-    * IJB-A (1:1 Veification TAR@FAR=0.1 %: 99.60±0.10; 1:1 Veification TAR@FAR=0.01 %: 99.10±0.20; 1:1 Veification TAR@FAR=0.001 %: 97.90±0.40; 1:N Identification FNIR@FPIR=0.1 %: 1.30±0.30; 1:N Identification FNIR@FPIR=0.01 %: 5.40±4.70; 1:N Identification Rank1 Accuracy %: 99.20±0.10; 1:N Identification Rank5 Accuracy %: 99.70±0.10; 1:N Identification Rank10 Accuracy: 99.80±0.10)
+    * IJB-A (1:1 Veification TAR@FAR=0.1: 99.6%±0.1%; 1:1 Veification TAR@FAR=0.01: 99.1%±0.2%; 1:1 Veification TAR@FAR=0.001: 97.9%±0.4%; 1:N Identification FNIR@FPIR=0.1: 1.3%±0.3%; 1:N Identification FNIR@FPIR=0.01: 5.4%±4.7%; 1:N Identification Rank1 Accuracy: 99.2%±0.1%; 1:N Identification Rank5 Accuracy: 99.7%±0.1%; 1:N Identification Rank10 Accuracy: 99.8%±0.1%)
 
 
-    * Labeled Faces in the Wild (LFW) (Accuracy %: 99.85±0.217)
+    * Labeled Faces in the Wild (LFW) (Accuracy: 99.85%±0.217%)
 
 
     * Celebrities in Frontal-Profile (CFP)
 
 
-    * CMU Multi-PIE (Rank1 Accuracy Setting-1 under ±90° %: 76.12; Rank1 Accuracy Setting-2 under ±90° %: 86.73)
+    * CMU Multi-PIE (Rank1 Accuracy Setting-1 under ±90°: 76.12%; Rank1 Accuracy Setting-2 under ±90°: 86.73%)
 
 
 ### Citation
