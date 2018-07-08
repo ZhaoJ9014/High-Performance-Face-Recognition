@@ -20,7 +20,7 @@ This repository provides several high performance models for unconstrained / lar
     * Labeled Faces in the Wild (LFW) (Accuracy: 99.85%±0.217%)
 
 
-    * Celebrities in Frontal-Profile (CFP)
+    * Celebrities in Frontal-Profile (CFP) (Frontal-Profile Accuracy: 96.01%±0.84%; Frontal-Profile EER: 4.43%±1.04%; Frontal-Profile AUC: 99.00%±0.35%; Frontal-Frontal Accuracy: 99.64%±0.25%; Frontal-Frontal EER: 0.54%±0.37%; Frontal-Frontal AUC: 99.98%±0.03%)
 
 
     * CMU Multi-PIE (Rank1 Accuracy Setting-1 under ±90°: 76.12%; Rank1 Accuracy Setting-2 under ±90°: 86.73%)
