@@ -10,7 +10,7 @@ This repository provides several high performance models for unconstrained / lar
 * 2017 No.1 on National Institute of Standards and Technology (NIST) IARPA Janus Benchmark A (IJB-A) Unconstrained Face [Verification](https://zhaoj9014.github.io/pub/IJBA_11_report.pdf) challenge and [Identification](https://zhaoj9014.github.io/pub/IJBA_1N_report.pdf) challenge. [WeChat News](https://mp.weixin.qq.com/s/s9H_OXX-CCakrTAQUFDm8g)
 
 
-* SOTA performance on MS-Celeb-1M, IJB-A, Labeled Faces in the Wild (LFW), Celebrities in Frontal-Profile (CFP), CMU Multi-PIE, etc. 
+* SOTA performance on MS-Celeb-1M (Challenge1 Hard Set Coverage@P=0.95: 79.10%; Challenge1 Random Set Coverage@P=0.95: 87.50%; Challenge2 Base Set Top 1 Accuracy: 99.74%; Challenge2 Novel Set Coverage@P=0.99: 99.01%), IJB-A, Labeled Faces in the Wild (LFW), Celebrities in Frontal-Profile (CFP), CMU Multi-PIE, etc. 
 
 
 ### Citation
