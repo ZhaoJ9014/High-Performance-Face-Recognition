@@ -16,7 +16,7 @@ This repository provides several high performance models for unconstrained / lar
     * MS-Celeb-1M (Challenge1 Hard Set Coverage@P=0.95: 79.10%; Challenge1 Random Set Coverage@P=0.95: 87.50%; Challenge2 Development Set Coverage@P=0.99: 100.00%; Challenge2 Base Set Top 1 Accuracy: 99.74%; Challenge2 Novel Set Coverage@P=0.99: 99.01%)
 
 
-    * IJB-A
+    * IJB-A (1:1 Veification TAR@FAR=0.1: 0.996±0.001; 1:1 Veification TAR@FAR=0.01: 0.991±0.002; 1:1 Veification TAR@FAR=0.001: 0.979±0.004; 1:N Identification FNIR@FPIR=0.1: 0.013±0.003; 1:N Identification FNIR@FPIR=0.01: 0.054±0.047; 1:N Identification Rank1 Accuracy: 0.992±0.001; 1:N Identification Rank5 Accuracy: 0.997±0.001; 1:N Identification Rank10 Accuracy: 0.998±0.001)
 
 
     * Labeled Faces in the Wild (LFW)
