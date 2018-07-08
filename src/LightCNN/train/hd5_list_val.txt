@@ -1,0 +1,2 @@
+/home/psl/XuYan/LCNN/hd5/train_29.h5
+/home/psl/XuYan/LCNN/hd5/train_3.h5
