@@ -1,5 +1,16 @@
-# High_Performance_Face_Recognition
-Several high performance models for unconstrained / large-scale / low-shot face recognition
+# High Performance Face Recognition
+
+
+This repository provides several high performance models for unconstrained / large-scale / low-shot face recognition, based on which we have achieved:
+
+
+* 2017 No.1 on ICCV 2017 MS-Celeb-1M Large-Scale Face Recognition Hard Set / Random Set / Low-Shot Learning Challenges.
+
+
+* 2017 No.1 on National Institute of Standards and Technology (NIST) IARPA Janus Benchmark A (IJB-A) Unconstrained Face Verification challenge and Identification challenge.
+
+
+* SOTA performance on MS-Celeb-1M, IJB-A, LFW, CFP, Multi-PIE, etc. 
 
 
 ### Citation
