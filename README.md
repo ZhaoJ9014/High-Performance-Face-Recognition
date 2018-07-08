@@ -27,7 +27,7 @@ This repository provides several high performance models for unconstrained / lar
 
 
 ### Download
-- Please refer to this [link](https://drive.google.com/drive/folders/15L-macCtlFDondqbDDoZFcz1Qe9bLqH4?usp=sharing) to access our source codes and models (continue to update).
+- Please refer to "./src/" and this [link](https://drive.google.com/drive/folders/15L-macCtlFDondqbDDoZFcz1Qe9bLqH4?usp=sharing) to access our full source codes and models (continue to update).
 
 
 ### Citation
