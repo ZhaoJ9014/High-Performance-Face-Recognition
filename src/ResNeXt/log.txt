@@ -1,0 +1,60 @@
+
+
+NovelSet 1
+------------------------------------
+Base
+------------------------------------
+galleryFeatures.shape:  (21000, 2048)
+galleryFeatures.shape:  (2048, 21000)
+Computing the result...
+('time elapsed:', 26.360852003097534)
+(20000, 21000)
+len(lines):  20000
+Accuracy:  0.99265
+Coverage_099:  1.00267676768
+Coverage_095:  1.04489473684
+
+Novel
+------------------------------------
+galleryFeatures.shape:  (21000, 2048)
+galleryFeatures.shape:  (2048, 21000)
+Computing the result...
+('time elapsed:', 5.5733301639556885)
+(5000, 21000)
+len(lines):  5000
+Accuracy:  0.6242
+Coverage_099:  0.630505050505
+Coverage_095:  0.657052631579
+
+
+
+NovelSet 2
+------------------------------------
+Novel
+------------------------------------
+galleryFeatures.shape:  (21000, 2048)
+galleryFeatures.shape:  (2048, 21000)
+Computing the result...
+('time elapsed:', 5.708951950073242)
+(5000, 21000)
+len(lines):  5000
+Accuracy:  0.8722
+Coverage_099:  0.88101010101
+Coverage_095:  0.918105263158
+
+
+
+NovelSet 5
+------------------------------------
+Novel
+------------------------------------
+galleryFeatures.shape:  (21000, 2048)
+galleryFeatures.shape:  (2048, 21000)
+Computing the result...
+('time elapsed:', 5.227938890457153)
+(5000, 21000)
+len(lines):  5000
+Accuracy:  0.967
+Coverage_099:  0.976767676768
+Coverage_095:  1.01789473684
+------------------------------------
