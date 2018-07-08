@@ -3,7 +3,7 @@
 
 ### Datasets
 - Training data
-	- Download face dataset [MS-Celeb-1M (Aligned)](http://www.msceleb.org/download/aligned).
+	- Download [MS-Celeb-1M (Aligned)](http://www.msceleb.org/download/aligned).
 	- All data are RGB images and resize to 122x144.
 	- Download MS-Celeb-1M cleaned image_list [10K](https://1drv.ms/t/s!AleP5K29t5x7ge87YS8Ue92h8JDDMw), [70K](https://1drv.ms/t/s!AleP5K29t5x7gfEu_3My1D3lgDhLlQ).
 
