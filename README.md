@@ -66,9 +66,3 @@ This repository provides several high performance models for unconstrained / lar
       year={2017},
       organization={IEEE}
       }
-      
-      
-      @article{wangconditional,
-      title={Conditional Dual-Agent GANs for Photorealistic and Annotation Preserving Image Synthesis},
-      author={Wang, Zhecan and Zhao, Jian and Cheng, Yu and Xiao, Shengtao and Li, Jianshu and Zhao, Fang and Feng, Jiashi and Kassim,           Ashraf}
-      }
