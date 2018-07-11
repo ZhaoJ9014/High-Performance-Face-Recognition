@@ -1,0 +1,162 @@
+imgbestmated11 = 
+ ReadList["/home/zhaojian/Documents/split1/best_mated1/img_file/top_1_\
+best_mated_tem_273.txt", String]
+scorebestmated11 = 
+ ReadList["/home/zhaojian/Documents/split1/best_mated1/score_file/top_\
+1_best_mated.txt", String]
+tembestmated11 = 
+ ReadList["/home/zhaojian/Documents/split1/best_mated1/template_file/\
+top_1_best_mated.txt", String]
+Length[imgbestmated11]
+
+
+
+SetDirectory["/home/zhaojian/Documents/split1/test/"];
+images = imgbestmated11;
+count = 1
+Do[imagevar[count++] = Import[image], {image, images}]
+a0 = ImageResize[imagevar[1], {224, 224}]
+a1 = ImageResize[imagevar[2], {224, 224}]
+a2 = ImageResize[imagevar[3], {224, 224}]
+a3 = ImageResize[imagevar[4], {224, 224}]
+a4 = ImageResize[imagevar[5], {224, 224}]
+a5 = ImageResize[imagevar[6], {224, 224}]
+a6 = ImageResize[imagevar[7], {224, 224}]
+a7 = ImageResize[imagevar[8], {224, 224}]
+a8 = ImageResize[
+  ImageCollage[{imagevar[9], imagevar[10], imagevar[11], imagevar[12], imagevar[13], \
+imagevar[14], imagevar[15], imagevar[16], imagevar[17], imagevar[18], \
+imagevar[19], imagevar[20], imagevar[21], imagevar[22], imagevar[23], \
+imagevar[24], imagevar[25], imagevar[26], imagevar[27], imagevar[28], \
+imagevar[29], imagevar[30], imagevar[31], imagevar[32], imagevar[33], \
+imagevar[34], imagevar[35], imagevar[36], imagevar[37], imagevar[38], \
+imagevar[39], imagevar[40], imagevar[41], imagevar[42], imagevar[43], \
+imagevar[44], imagevar[45], imagevar[46], imagevar[47], imagevar[48], \
+imagevar[49], imagevar[50], imagevar[51], imagevar[52], imagevar[53], \
+imagevar[54], imagevar[55], imagevar[56], imagevar[57], imagevar[58], \
+imagevar[59], imagevar[60], imagevar[61], imagevar[62], imagevar[63], \
+imagevar[64], imagevar[65], imagevar[66], imagevar[67], imagevar[68], \
+imagevar[69], imagevar[70], imagevar[71], imagevar[72], imagevar[73], \
+imagevar[74], imagevar[75], imagevar[76], imagevar[77], imagevar[78], \
+imagevar[79], imagevar[80], imagevar[81], imagevar[82], imagevar[83], \
+imagevar[84], imagevar[85], imagevar[86], imagevar[87], imagevar[88], \
+imagevar[89], imagevar[90], imagevar[91], imagevar[92], imagevar[93], \
+imagevar[94], imagevar[95], imagevar[96], imagevar[97], imagevar[98], \
+imagevar[99], imagevar[100], imagevar[101], imagevar[102], \
+imagevar[103], imagevar[104], imagevar[105], imagevar[106], \
+imagevar[107], imagevar[108], imagevar[109], imagevar[110], \
+imagevar[111], imagevar[112], imagevar[113], imagevar[114], \
+imagevar[115], imagevar[116], imagevar[117], imagevar[118], \
+imagevar[119], imagevar[120], imagevar[121], imagevar[122], \
+imagevar[123], imagevar[124], imagevar[125], imagevar[126], \
+imagevar[127], imagevar[128], imagevar[129], imagevar[130], \
+imagevar[131], imagevar[132], imagevar[133], imagevar[134], \
+imagevar[135], imagevar[136], imagevar[137], imagevar[138], \
+imagevar[139], imagevar[140], imagevar[141], imagevar[142], \
+imagevar[143], imagevar[144], imagevar[145], imagevar[146], \
+imagevar[147], imagevar[148], imagevar[149], imagevar[150], \
+imagevar[151], imagevar[152], imagevar[153], imagevar[154], \
+imagevar[155], imagevar[156], imagevar[157], imagevar[158], \
+imagevar[159], imagevar[160], imagevar[161], imagevar[162], \
+imagevar[163], imagevar[164], imagevar[165], imagevar[166], \
+imagevar[167], imagevar[168], imagevar[169], imagevar[170], \
+imagevar[171], imagevar[172], imagevar[173], imagevar[174], \
+imagevar[175], imagevar[176], imagevar[177], imagevar[178], \
+imagevar[179], imagevar[180], imagevar[181], imagevar[182], \
+imagevar[183], imagevar[184], imagevar[185], imagevar[186], \
+imagevar[187], imagevar[188], imagevar[189], imagevar[190]}], {224, 224}]
+a9 = ImageResize[Graphics[Text[Style["273
+     0.78168", Black, 80]]], {224, 224}]
+A11 = ImageAssemble[{a8, a7, a6, a5, a4, a3, a2, a1, a0, a9}]
+
+
+
+imgbestmated12 = 
+ ReadList["/home/zhaojian/Documents/split1/best_mated2/img_file/top_1_\
+best_mated_tem_279.txt", String]
+tembestmated12 = 
+ ReadList["/home/zhaojian/Documents/split1/best_mated2/template_file/\
+top_1_best_mated.txt", String]
+Length[imgbestmated12]
+
+
+SetDirectory["/home/zhaojian/Documents/split1/test/"];
+images = imgbestmated12;
+count = 1
+Do[imagevar[count++] = Import[image], {image, images}]
+a0 = ImageResize[imagevar[1], {224, 224}]
+a1 = ImageResize[imagevar[2], {224, 224}]
+a2 = ImageResize[imagevar[3], {224, 224}]
+a3 = ImageResize[imagevar[4], {224, 224}]
+a4 = ImageResize[imagevar[5], {224, 224}]
+a5 = ImageResize[imagevar[6], {224, 224}]
+a6 = ImageResize[imagevar[7], {224, 224}]
+a7 = ImageResize[imagevar[8], {224, 224}]
+a8 = ImageResize[
+  ImageCollage[{imagevar[9], imagevar[10], imagevar[11], imagevar[12], imagevar[13], \
+imagevar[14], imagevar[15], imagevar[16], imagevar[17], imagevar[18], \
+imagevar[19], imagevar[20], imagevar[21], imagevar[22], imagevar[23], \
+imagevar[24], imagevar[25], imagevar[26], imagevar[27], imagevar[28], \
+imagevar[29], imagevar[30], imagevar[31], imagevar[32], imagevar[33], \
+imagevar[34], imagevar[35], imagevar[36], imagevar[37], imagevar[38], \
+imagevar[39], imagevar[40], imagevar[41], imagevar[42], imagevar[43], \
+imagevar[44], imagevar[45], imagevar[46], imagevar[47], imagevar[48], \
+imagevar[49], imagevar[50], imagevar[51], imagevar[52], imagevar[53], \
+imagevar[54], imagevar[55], imagevar[56], imagevar[57], imagevar[58], \
+imagevar[59], imagevar[60], imagevar[61], imagevar[62], imagevar[63], \
+imagevar[64], imagevar[65], imagevar[66], imagevar[67], imagevar[68], \
+imagevar[69], imagevar[70], imagevar[71], imagevar[72], imagevar[73], \
+imagevar[74], imagevar[75], imagevar[76], imagevar[77], imagevar[78], \
+imagevar[79], imagevar[80], imagevar[81], imagevar[82], imagevar[83], \
+imagevar[84], imagevar[85], imagevar[86], imagevar[87], imagevar[88], \
+imagevar[89], imagevar[90], imagevar[91], imagevar[92], imagevar[93], \
+imagevar[94], imagevar[95], imagevar[96], imagevar[97], imagevar[98], \
+imagevar[99], imagevar[100], imagevar[101], imagevar[102], \
+imagevar[103], imagevar[104], imagevar[105], imagevar[106], \
+imagevar[107], imagevar[108], imagevar[109], imagevar[110], \
+imagevar[111], imagevar[112], imagevar[113], imagevar[114], \
+imagevar[115], imagevar[116], imagevar[117], imagevar[118], \
+imagevar[119], imagevar[120], imagevar[121], imagevar[122], \
+imagevar[123], imagevar[124], imagevar[125], imagevar[126], \
+imagevar[127], imagevar[128], imagevar[129], imagevar[130], \
+imagevar[131], imagevar[132], imagevar[133], imagevar[134], \
+imagevar[135], imagevar[136], imagevar[137], imagevar[138], \
+imagevar[139], imagevar[140], imagevar[141], imagevar[142], \
+imagevar[143], imagevar[144], imagevar[145], imagevar[146], \
+imagevar[147], imagevar[148], imagevar[149], imagevar[150], \
+imagevar[151], imagevar[152], imagevar[153], imagevar[154], \
+imagevar[155], imagevar[156], imagevar[157], imagevar[158], \
+imagevar[159], imagevar[160], imagevar[161], imagevar[162], \
+imagevar[163], imagevar[164], imagevar[165], imagevar[166], \
+imagevar[167], imagevar[168], imagevar[169], imagevar[170], \
+imagevar[171], imagevar[172], imagevar[173], imagevar[174], \
+imagevar[175], imagevar[176], imagevar[177], imagevar[178], \
+imagevar[179], imagevar[180], imagevar[181], imagevar[182], \
+imagevar[183], imagevar[184], imagevar[185], imagevar[186], \
+imagevar[187], imagevar[188], imagevar[189], imagevar[190]}], {224, 
+   224}]
+a9 = ImageResize[Graphics[Text[Style["279
+     0.78168", Black, 80]]], {224, 224}]
+A12 = ImageAssemble[{a9, a0, a1, a2, a3, a4, a5, a6, a7, a8}]
+
+
+A1 = ImageAssemble[{A11, A12}]
+
+
+ImageResize[Graphics[Text[Style["", Black, 80]]], {224, 224}]
+
+
+bestmated = 
+ ImageAssemble[{{A30}, {A29}, {A28}, {A27}, {A26}, {A25}, {A24}, \
+{A23}, {A22}, {A21}, {A20}, {A19}, {A18}, {A17}, {A16}, {A15}, {A14}, \
+{A13}, {A12}, {A11}, {A10}, {A9}, {A8}, {A7}, {A6}, {A5}, {A4}, {A3}, \
+{A2}, {A1}}]
+
+
+bestmated = 
+ ImageAssemble[{{A1}, {A2}, {A3}, {A4}, {A5}, {A6}, {A7}, {A8}, {A9}, \
+{A10}, {A11}, {A12}, {A13}, {A14}, {A15}, {A16}, {A17}, {A18}, {A19}, \
+{A20}, {A21}, {A22}, {A23}, {A24}, {A25}, {A26}, {A27}, {A28}, {A29}, \
+{A30}}]
+
+Export["/home/zhaojian/Documents/best_mated.pdf", bestmated, "PDF"]
