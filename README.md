@@ -34,6 +34,23 @@ This repository provides several high performance models for unconstrained / lar
 - Please consult and consider citing the following papers:
 
 
+      @article{zhao2018look,
+      title={Look Across Elapse: Disentangled Representation Learning and Photorealistic Cross-Age Face Synthesis for Age-Invariant Face Recognition},
+      author={Zhao, Jian and Cheng, Yu and Cheng, Yi and Yang, Yang and Lan, Haochong and Zhao, Fang and Xiong, Lin and Xu, Yan and Li, Jianshu and Pranata, Sugiri and others},
+      journal={arXiv preprint arXiv:1809.00338},
+      year={2018}
+      }
+      
+      
+      @article{zhao20183d,
+      title={3D-Aided Dual-Agent GANs for Unconstrained Face Recognition},
+      author={Zhao, Jian and Xiong, Lin and Li, Jianshu and Xing, Junliang and Yan, Shuicheng and Feng, Jiashi},
+      journal={IEEE transactions on pattern analysis and machine intelligence},
+      year={2018},
+      publisher={IEEE}
+      }
+      
+      
       @inproceedings{zhao2017dual,
       title={Dual-agent gans for photorealistic and identity preserving profile face synthesis},
       author={Zhao, Jian and Xiong, Lin and Jayashree, Panasonic Karlekar and Li, Jianshu and Zhao, Fang and Wang, Zhecan and Pranata,           Panasonic Sugiri and Shen, Panasonic Shengmei and Yan, Shuicheng and Feng, Jiashi},
