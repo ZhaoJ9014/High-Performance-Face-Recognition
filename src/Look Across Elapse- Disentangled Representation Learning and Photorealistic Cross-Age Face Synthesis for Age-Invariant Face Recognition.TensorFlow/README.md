@@ -2,7 +2,7 @@
 ### Look Across Elapse: Disentangled Representation Learning and Photorealistic Cross-Age Face Synthesis for Age-Invariant Face Recognition
 
 
-- Pytorch implementation of the algorithm in our under-review [Paper](https://arxiv.org/pdf/1809.00338.pdf).
+- TensorFlow implementation of the algorithm in our under-review [Paper](https://arxiv.org/pdf/1809.00338.pdf).
 
 
 <p align="center">
