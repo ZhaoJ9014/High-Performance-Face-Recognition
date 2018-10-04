@@ -4,6 +4,9 @@
 
 - TensorFlow implementation of the algorithm in our under-review [Paper](https://arxiv.org/pdf/1809.00338.pdf).
 
+<p align="center">
+  <img src="pub/AIM_Results.png" width="500">
+</p>
 
 <p align="center">
   <img src="pub/AIM.png" width="500">
