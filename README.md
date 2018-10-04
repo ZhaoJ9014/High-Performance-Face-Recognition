@@ -45,16 +45,15 @@ This repository provides several high performance models for unconstrained / lar
       @article{zhao20183d,
       title={3D-Aided Dual-Agent GANs for Unconstrained Face Recognition},
       author={Zhao, Jian and Xiong, Lin and Li, Jianshu and Xing, Junliang and Yan, Shuicheng and Feng, Jiashi},
-      journal={IEEE transactions on pattern analysis and machine intelligence},
-      year={2018},
-      publisher={IEEE}
+      journal={T-PAMI},
+      year={2018}
       }
       
       
       @inproceedings{zhao2017dual,
       title={Dual-agent gans for photorealistic and identity preserving profile face synthesis},
       author={Zhao, Jian and Xiong, Lin and Jayashree, Panasonic Karlekar and Li, Jianshu and Zhao, Fang and Wang, Zhecan and Pranata,           Panasonic Sugiri and Shen, Panasonic Shengmei and Yan, Shuicheng and Feng, Jiashi},
-      booktitle={Advances in Neural Information Processing Systems},
+      booktitle={NIPS},
       pages={66--76},
       year={2017}
       }
@@ -63,23 +62,25 @@ This repository provides several high performance models for unconstrained / lar
       @inproceedings{zhao2018towards,
       title={Towards Pose Invariant Face Recognition in the Wild},
       author={Zhao, Jian and Cheng, Yu and Xu, Yan and Xiong, Lin and Li, Jianshu and Zhao, Fang and Jayashree, Karlekar and Pranata,         Sugiri and Shen, Shengmei and Xing, Junliang and others},
-      booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+      booktitle={CVPR},
       pages={2207--2216},
       year={2018}
       }
       
       
-      @article{zhao3d,
+      @inproceedings{zhao3d,
       title={3D-Aided Deep Pose-Invariant Face Recognition},
-      author={Zhao, Jian and Xiong, Lin and Cheng, Yu and Cheng, Yi and Li, Jianshu and Zhou, Li and Xu, Yan and Karlekar, Jayashree and       Pranata, Sugiri and Shen, Shengmei and others}
+      author={Zhao, Jian and Xiong, Lin and Cheng, Yu and Cheng, Yi and Li, Jianshu and Zhou, Li and Xu, Yan and Karlekar, Jayashree and       Pranata, Sugiri and Shen, Shengmei and others},
+      booktitle={IJCAI},
+      pages={1184--1190},
+      year={2018}
       }
 
 
       @inproceedings{cheng2017know,
       title={Know you at one glance: A compact vector representation for low-shot learning},
       author={Cheng, Yu and Zhao, Jian and Wang, Zhecan and Xu, Yan and Jayashree, Karlekar and Shen, Shengmei and Feng, Jiashi},
-      booktitle={Computer Vision Workshop (ICCVW), 2017 IEEE International Conference on},
+      booktitle={ICCVW},
       pages={1924--1932},
-      year={2017},
-      organization={IEEE}
+      year={2017}
       }
