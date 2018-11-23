@@ -18,5 +18,5 @@ While not required, for optimal performance(especially for the detector) it is *
 * The aligned and resized face images will be automatically stored to the folder 'test_aligned', the subfolder names and image names remain unchanged. Modify the paths if needed.
 
 <p align='center'>
-<img src='pub/results.pdf' title='example' style='max-width:600px'></img>
+<img src='pub/results.png' title='example' style='max-width:300px'></img>
 </p>
