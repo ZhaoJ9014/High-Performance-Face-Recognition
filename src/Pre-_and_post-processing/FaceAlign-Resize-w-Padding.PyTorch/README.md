@@ -8,7 +8,7 @@ This repo provides a easy-to-use helper function for accurate face alignment & r
 * Python 3.5+ or Python 2.7 (it may work with other versions too)
 * Linux, Windows or macOS
 * PyTorch (>=0.4)
-* [Face Landmark Localization Tool](https://arxiv.org/pdf/1703.07332.pdf) (Install: `pip install face-alignment` or `conda install -c 1adrianb face_alignment`)
+* [Facial Landmark Localization Tool](https://arxiv.org/pdf/1703.07332.pdf) (Install: `pip install face-alignment` or `conda install -c 1adrianb face_alignment`)
 
 While not required, for optimal performance(especially for the detector) it is **highly** recommended to run the code using a CUDA enabled GPU.
 
