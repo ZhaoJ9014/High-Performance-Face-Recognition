@@ -17,4 +17,6 @@ While not required, for optimal performance(especially for the detector) it is *
 * Run 'face_norm.py' as an example to investigate how to call 'face_alignment' for predicting 68 faical key points, 'FaceAligner' for aligning face images, and 'FaceResizer' for resizing face images with padding.
 * The aligned and resized face images will be automatically stored to the folder 'test_aligned', the subfolder names and image names remain unchanged. Modify the paths if needed.
 
-<img src="https://github.com/ZhaoJ9014/High_Performance_Face_Recognition/tree/master/src/Pre-_and_post-processing/FaceAlign-Resize-w-Padding.PyTorch/pub/results.png" width="1000px"/>
+<p align='center'>
+<img src='pub/results.png' title='example' style='max-width:600px'></img>
+</p>
