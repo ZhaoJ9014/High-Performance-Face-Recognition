@@ -14,5 +14,5 @@ While not required, for optimal performance(especially for the detector) it is *
 ### Usage
 
 * Organize the face images of different identities for processing under the folder 'test'. Modify the paths if needed.
-* Run face_norm.py as a demo to investigate how to call 'face_alignment' for predicting 68 faical key points, 'FaceAligner' for aligning face images, and 'FaceResizer' for resizing face images with padding.
+* Run 'face_norm.py' as a demo to investigate how to call 'face_alignment' for predicting 68 faical key points, 'FaceAligner' for aligning face images, and 'FaceResizer' for resizing face images with padding.
 * The aligned and resized face images will be automatically stored to the folder 'test_aligned', the subfolder names and image names remain unchanged. Modify the paths if needed.
