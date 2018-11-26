@@ -12,3 +12,4 @@ While not required, for optimal performance it is **highly** recommended to run 
 
 ### Usage
 
+* Dataset preparation: Download the CASIA_WEB_FACE dataset, which contains 494,414 face images from 10,575 subjects.
