@@ -21,5 +21,5 @@ While not required, for optimal performance it is **highly** recommended to run 
 ##### Training
 
 * The training script is 'train_resnet50_pretrained.py'.
-* The training of ResNet is done in 3 stages (configs 1, 2 and 3 in 'config.py'), each of 30 epochs (57960 iterations with batch_size 256). For the 1st stage, we started with the ImageNet-pre-trained model from 'torchvision.models'. After the 1st stage, we start from the saved best checkpoint model of the previous stage and divid the learning rate by a factor of 10.
+* The training of ResNet is done in 3 stages (configs 1, 2 and 3 in 'config.py'), each of 30 epochs (57,960 iterations with batch_size 256). For the 1st stage, we started with the ImageNet-pre-trained model from 'torchvision.models'. After the 1st stage, we start from the saved best checkpoint model of the previous stage and divid the learning rate by a factor of 10.
 
