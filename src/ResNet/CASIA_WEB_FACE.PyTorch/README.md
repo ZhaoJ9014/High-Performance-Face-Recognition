@@ -13,7 +13,7 @@ While not required, for optimal performance it is **highly** recommended to run 
 ### Data Preparation
 
 * Download the CASIA_WEB_FACE dataset for training, which contains 494,414 face images from 10,575 subjects; Download the LFW dataset for validation, which contains 13,233 face images from 5,749 subjects.
-* Delete "*.DS_Store" with: `find . -name "*.DS_Store" -type f -delete`; Count class number with: `echo */ | wc`; Count image numbber with: `ls -lR|grep "^-"|wc -l`.
+* Delete '*.DS_Store' with: `find . -name "*.DS_Store" -type f -delete`; Count class number with: `echo */ | wc`; Count image numbber with: `ls -lR|grep "^-"|wc -l`.
 * All images (both training & validation) need to be aligned (normalized) and resized with appropriate padding. The code is in the src/Pre-_and_post-processing/FaceAlign-Resize-w-Padding.PyTorch. Training images are under 'DATA/CASIA_WEB_FACE_Aligned'. Validation images are under 'DATA/lfw_Aligned'.
 
 ### Usage
