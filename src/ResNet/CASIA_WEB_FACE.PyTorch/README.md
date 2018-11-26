@@ -12,4 +12,5 @@ While not required, for optimal performance it is **highly** recommended to run 
 
 ### Usage
 
-* Dataset preparation: Download the CASIA_WEB_FACE dataset, which contains 494,414 face images from 10,575 subjects.
+* Dataset preparation: Download the CASIA_WEB_FACE dataset for training, which contains 494,414 face images from 10,575 subjects; Download the LFW dataset for validation, which contains 13,233 face images from 5,749 subjects.
+* All images need to be aligned (normalized) and resized with appropriate padding. The code is in the src/Pre-\_and\_post-processing/FaceAlign-Resize-w-Padding.PyTorch.
