@@ -10,9 +10,11 @@ This repo shows how to train ResNet models on CASIA_WEB_FACE and validate the mo
 
 While not required, for optimal performance it is **highly** recommended to run the code using a CUDA enabled GPU. We used 4 GeForce GTX 1080Ti in parallel.
 
-### Usage
+### Data Preparation
 
-* Dataset preparation: Download the CASIA_WEB_FACE dataset for training, which contains 494,414 face images from 10,575 subjects; Download the LFW dataset for validation, which contains 13,233 face images from 5,749 subjects.
+* Download the CASIA_WEB_FACE dataset for training, which contains 494,414 face images from 10,575 subjects; Download the LFW dataset for validation, which contains 13,233 face images from 5,749 subjects.
 * Delete "*.DS_Store" with: find . -name "*.DS_Store" -type f -delete; Count class number with: echo */ | wc; Count image numbber with: ls -lR|grep "^-"|wc -l.
 * All images need to be aligned (normalized) and resized with appropriate padding. The code is in the src/Pre-_and_post-processing/FaceAlign-Resize-w-Padding.PyTorch/face_norm.py.
+
+### Usage
 
