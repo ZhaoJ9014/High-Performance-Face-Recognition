@@ -14,12 +14,16 @@ While not required, for optimal performance it is **highly** recommended to run 
 
 * Download the CASIA_WEB_FACE dataset for training, which contains 494,414 face images from 10,575 subjects; Download the LFW dataset for validation, which contains 13,233 face images from 5,749 subjects.
 * Delete "*.DS_Store" with: find . -name "*.DS_Store" -type f -delete; Count class number with: echo */ | wc; Count image numbber with: ls -lR|grep "^-"|wc -l.
-* All images (both training & validation) need to be aligned (normalized) and resized with appropriate padding. The code is in the src/Pre-_and_post-processing/FaceAlign-Resize-w-Padding.PyTorch.
+* All images (both training & validation) need to be aligned (normalized) and resized with appropriate padding. The code is in the src/Pre-_and_post-processing/FaceAlign-Resize-w-Padding.PyTorch. Training images are under 'DATA/CASIA_WEB_FACE_Aligned'. Validation images are under 'DATA/lfw_Aligned'.
 
 ### Usage
 
 ##### Training
 
 * The training script is 'train_resnet50_pretrained.py'.
-* The training of ResNet is done in 3 stages (configs 1, 2 and 3 in 'config.py'), each of 30 epochs (57,960 iterations with batch_size 256). For the 1st stage, we started with the ImageNet-pre-trained model from 'torchvision.models'. After the 1st stage, we start from the saved best checkpoint model of the previous stage and divid the learning rate by a factor of 10.
+* The training of ResNet is done in 3 stages (training settings are defined under 1, 2 and 3 in 'config.py', respectively), each of 30 epochs (57,960 iterations with batch_size 256). 
+* For the 1st stage, we started with the ImageNet-pre-trained model from 'torchvision.models', using Adam optimizer, starting with a learning rate of 0.1. After the 1st stage, we start from the saved best checkpoint model of the previous stage as initialization and divid the learning rate by a factor of 10.
+* 1st stage training command: `python train_resnet50_pretrained.py -c 1`
+* 2nd stage training command: `python train_resnet50_vggface_pretrained.py -c 2 -m PATH_TO_BEST_MODEL_OF_STAGE1`
+* 3rd stage training command: `python train_resnet50_vggface_pretrained.py -c 2 -m PATH_TO_BEST_MODEL_OF_STAGE2`
 
