@@ -5,5 +5,10 @@ This repo shows how to train ResNet models on CASIA_WEB_FACE and validate the mo
 ### Pre-requisites
 
 * Python 3.5+ or Python 2.7 (it may work with other versions too)
+* Linux, Windows or macOS
+* PyTorch (>=0.4)
 
-* Multiple GPUs (we used 4 GeForce GTX 1080Ti in parallel) recommended for the training to finish in reasonable time.
+While not required, for optimal performance it is **highly** recommended to run the code using a CUDA enabled GPU. We used 4 GeForce GTX 1080Ti in parallel.
+
+### Usage
+
