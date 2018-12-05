@@ -73,7 +73,7 @@ def main():
     #       class_2/....jpg.. 
     #       ......./....jpg.. 
     data_root = args.dataset_path
-    kwargs = {'num_workers': 4, 'pin_memory': True} if cuda else {}
+    kwargs = {'num_workers': 1, 'pin_memory': True} if cuda else {}
     RGB_MEAN = [ 0.485, 0.456, 0.406 ]
     RGB_STD = [ 0.229, 0.224, 0.225 ]
     
