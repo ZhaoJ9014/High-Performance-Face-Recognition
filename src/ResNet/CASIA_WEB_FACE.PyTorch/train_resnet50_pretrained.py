@@ -73,7 +73,7 @@ def main():
     #       class_2/....jpg.. 
     #       ......./....jpg.. 
     data_root = args.dataset_path
-    kwargs = {'num_workers': 1, 'pin_memory': True} if cuda else {}
+    kwargs = {}#{'num_workers': 4, 'pin_memory': True} if cuda else {}
     RGB_MEAN = [ 0.485, 0.456, 0.406 ]
     RGB_STD = [ 0.229, 0.224, 0.225 ]
     
@@ -155,7 +155,7 @@ def main():
 
         if checkpoint['arch'] == 'DataParallel':
             # if we trained and saved our model using DataParallel
-            model = torch.nn.DataParallel(model, device_ids=[0, 1, 2, 3])
+            # model = torch.nn.DataParallel(model, device_ids=[0, 1, 2, 3])
             model.load_state_dict(checkpoint['model_state_dict'])
             model = model.module # get network module from inside its DataParallel wrapper
         else:
@@ -173,7 +173,7 @@ def main():
         model.fc = torch.nn.Sequential(*layers)
 
     # TODO - config options for DataParallel and device_ids
-    model = torch.nn.DataParallel(model, device_ids=[0, 1, 2, 3])
+    # model = torch.nn.DataParallel(model, device_ids=[0, 1, 2, 3])
 
     if cuda:
         model.cuda()  
