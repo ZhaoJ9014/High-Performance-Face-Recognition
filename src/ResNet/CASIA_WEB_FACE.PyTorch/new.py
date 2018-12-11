@@ -87,6 +87,9 @@ else:
     pass
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+if torch.cuda.device_count() > 1:
+    model = nn.DataParallel(model)
+model.to(device)
 
 criterion = nn.CrossEntropyLoss()
 criterion = criterion.to(device)
@@ -114,9 +117,6 @@ for epoch in range(NUM_EPOCHS):
         running_corrects = 0
 
         # Set model to training mode
-        if torch.cuda.device_count() > 1:
-            model = nn.DataParallel(model)
-        model.to(device)
         model.train()
 
         scheduler.step()
