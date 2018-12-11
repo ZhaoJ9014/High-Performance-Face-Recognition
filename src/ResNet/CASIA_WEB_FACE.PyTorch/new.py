@@ -118,11 +118,12 @@ for epoch in range(NUM_EPOCHS):
             model = nn.DataParallel(model)
         model.to(device)
         model.train()
+
         scheduler.step()
 
         # Iterate over data.
         for step, (inputs, labels) in enumerate(train_loader):
-            print('Step {}/{}'.format(step, len(train_loader) - 1))
+            print('Batch {}/{}'.format(step, len(train_loader) - 1))
             since_step = time.time()
 
             inputs = Variable(inputs).to(device)
@@ -143,7 +144,7 @@ for epoch in range(NUM_EPOCHS):
             optimizer.step()
 
             time_elapsed = time.time() - since_step
-            print('Train Step Loss: {:.4f} Acc: {:.4f} Elapsed: {:.0f}m {:.0f}s'.format(loss.data.item(), torch.sum(preds == labels.data).double() / inputs.data.size(0), time_elapsed // 60, time_elapsed % 60))
+            print('Train Batch Loss: {:.4f} Acc: {:.4f} Elapsed: {:.0f}m {:.0f}s'.format(loss.data.item(), torch.sum(preds == labels.data).double() / inputs.data.size(0), time_elapsed // 60, time_elapsed % 60))
 
             # Statistics
             running_loss += loss.data.item() * inputs.data.size(0)
@@ -157,6 +158,7 @@ for epoch in range(NUM_EPOCHS):
 
         # Set model to evaluate mode
         model_eval = model.module  # get network module from inside its DataParallel wrapper
+        model_eval = model_eval.to(device)
         model_eval.eval()
 
         # Feature extraction
@@ -214,8 +216,8 @@ for epoch in range(NUM_EPOCHS):
                 'arch': model.__class__.__name__,
                 'optim_state_dict': optimizer.state_dict(),
                 'model_state_dict': model.state_dict(),
-                'train_loss': epoch_loss,
-                'train_acc': epoch_acc,
+                'train_epoch_loss': epoch_loss,
+                'train_epoch_acc': epoch_acc,
                 'best_roc_auc': best_roc_auc,
             }, './models/{}_CASIA-WEB-FACE-Aligned_Epoch_{}_LfwAUC_{}.tar'.format(MODEL_NAME, epoch, best_roc_auc))
         print('Current Best val ROC AUC: {:4f}'.format(best_roc_auc))
