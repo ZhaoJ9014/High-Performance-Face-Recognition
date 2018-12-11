@@ -16,25 +16,28 @@ import tqdm
 import sklearn.metrics
 from scipy.optimize import brentq
 from scipy import interpolate
+from config import configurations
 
 #======= Parameters and DataLoaders =======#
-SEED = 1337
+cfg = configurations[1]
+
+SEED = cfg['SEED']
 torch.manual_seed(SEED)
 
-LR = 0.001
-TRAIN_BATCH_SIZE = 256
-VAL_BATCH_SIZE = 1
-NUM_EPOCHS = 30
-WEIGHT_DECAY=0.0005
+LR = cfg['LR']
+TRAIN_BATCH_SIZE = cfg['TRAIN_BATCH_SIZE']
+VAL_BATCH_SIZE = cfg['VAL_BATCH_SIZE']
+NUM_EPOCHS = cfg['NUM_EPOCHS']
+WEIGHT_DECAY = cfg['WEIGHT_DECAY']
 
-RGB_MEAN = [0.485, 0.456, 0.406]
-RGB_STD = [0.229, 0.224, 0.225]
+RGB_MEAN = cfg['RGB_MEAN']
+RGB_STD = cfg['RGB_STD']
 
-MODEL_NAME = 'ResNet50'
-TRAIN_PATH = '/home/zhaojian/zhaojian/DATA/CASIA_WEB_FACE_Aligned'
-VAL_PATH = '/home/zhaojian/zhaojian/DATA/lfw_Aligned'
-PAIR_TEXT_PATH = '/home/zhaojian/zhaojian/DATA/pairs.txt'
-FILE_EXT = 'jpg'  # observe, no '.' before jpg
+MODEL_NAME = cfg['MODEL_NAME']
+TRAIN_PATH = cfg['TRAIN_PATH']
+VAL_PATH = cfg['VAL_PATH']
+PAIR_TEXT_PATH = cfg['PAIR_TEXT_PATH']
+FILE_EXT = cfg['FILE_EXT']
 
 train_transform = transforms.Compose([
     transforms.Resize(256),  # smaller side resized
@@ -83,9 +86,15 @@ if type(model.fc) == nn.modules.linear.Linear:
 else:
     pass
 
-criterion = nn.CrossEntropyLoss()
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-optimizer = optim.Adam(params=model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
+criterion = nn.CrossEntropyLoss()
+criterion = criterion.to(device)
+
+if cfg['OPTIM'].lower()=='adam':
+    optimizer = torch.optim.Adam(model.parameters(), lr=cfg['LR'], weight_decay=cfg['WEIGHT_DECAY'])
+else:
+    raise NotImplementedError('Optimizer: Adam')
 
 # Decay LR by a factor of 0.1 every 10 epochs
 scheduler = lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
@@ -105,7 +114,6 @@ for epoch in range(NUM_EPOCHS):
         running_corrects = 0
 
         # Set model to training mode
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         if torch.cuda.device_count() > 1:
             model = nn.DataParallel(model)
         model.to(device)

@@ -1,32 +1,19 @@
 configurations = {
-    # ResNet from scratch with SGD
+    # ResNet from scratch with Adam
     1: dict(
-        # num_iter_per_epoch = ceil(num_images/batch_size)
-        max_iteration=463530,  # 30 epochs on full dataset
-        lr=0.1,
-        weight_decay=0.0005,
-        interval_validate=200,
-        optim='Adam',
-        batch_size=32,        
-    ),
-
-    2: dict(
-        # num_iter_per_epoch = ceil(num_images/batch_size)
-        max_iteration=463530,  # 30 epochs on full dataset
-        lr=0.01,
-        weight_decay=0.0005,
-        interval_validate=200,
-        optim='Adam',
-        batch_size=32,        
-    ),
-
-    3: dict(
-        # num_iter_per_epoch = ceil(num_images/batch_size)
-        max_iteration=463530,  # 30 epochs on full dataset
-        lr=0.001,
-        weight_decay=0.0005,
-        interval_validate=200,
-        optim='Adam',
-        batch_size=32,        
+        SEED=1337,
+        LR=0.001,
+        TRAIN_BATCH_SIZE=256,
+        VAL_BATCH_SIZE=1,
+        NUM_EPOCHS=30,
+        WEIGHT_DECAY=0.0005,
+        RGB_MEAN=[0.485, 0.456, 0.406],
+        RGB_STD=[0.229, 0.224, 0.225],
+        MODEL_NAME='ResNet50',
+        TRAIN_PATH='/home/zhaojian/zhaojian/DATA/CASIA_WEB_FACE_Aligned',
+        VAL_PATH='/home/zhaojian/zhaojian/DATA/lfw_Aligned',
+        PAIR_TEXT_PATH='/home/zhaojian/zhaojian/DATA/pairs.txt',
+        FILE_EXT='jpg',  # observe, no '.' before jpg
+        OPTIM='Adam',
     ),
 }
