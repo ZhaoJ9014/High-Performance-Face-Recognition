@@ -100,7 +100,7 @@ else:
     raise NotImplementedError('Optimizer: Adam')
 
 # Decay LR by a factor of 0.1 every 10 epochs
-scheduler = lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
+# scheduler = lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
 #======= Train & Validation & Saving Checkpoint =======#
 val_roc_auc_history = []
@@ -117,7 +117,7 @@ for epoch in range(NUM_EPOCHS):
         # Set model to training mode
         model.train()
 
-        scheduler.step()
+        # scheduler.step()
 
         # Iterate over data.
         for step, (inputs, labels) in enumerate(train_loader):
