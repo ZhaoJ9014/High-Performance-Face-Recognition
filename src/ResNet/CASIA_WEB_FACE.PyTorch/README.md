@@ -29,3 +29,5 @@ While not required, for optimal performance it is **highly** recommended to run 
 * The checkpoints will be stored in 'models/' as '{MODEL_NAME}_CASIA-WEB-FACE-Aligned_Epoch_{epoch}_LfwAUC_{best_roc_auc}.tar', including 'epoch', 'arch', 'optim_state_dict', 'model_state_dict', 'train_epoch_loss', 'train_epoch_acc', 'best_roc_auc'.
 
 * The training logs will be stored in 'logs/' as 'train_batch_loss_history_Aligned.txt' and 'train_batch_acc_history_Aligned.txt', including 'train_batch_loss_history' and 'train_batch_acc_history' for plotting curves.
+
+* TODO: Add Center Loss in the training script.
