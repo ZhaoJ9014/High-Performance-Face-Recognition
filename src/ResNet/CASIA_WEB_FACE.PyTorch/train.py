@@ -103,7 +103,8 @@ else:
 # scheduler = lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
 #======= Train & Validation & Saving Checkpoint =======#
-val_roc_auc_history = []
+train_batch_loss_history = []
+train_batch_acc_history = []
 best_model_wts = copy.deepcopy(model.state_dict())
 best_roc_auc = 0.0
 since = time.time()
@@ -143,6 +144,8 @@ for epoch in range(NUM_EPOCHS):
 
             time_elapsed = time.time() - since_step
             print('Train Batch Loss: {:.4f} Acc: {:.4f} Elapsed: {:.0f}m {:.0f}s'.format(loss.data.item(), torch.sum(preds == labels.data).double() / inputs.data.size(0), time_elapsed // 60, time_elapsed % 60))
+            train_batch_loss_history.append(loss.data.item())
+            train_batch_acc_history.append(torch.sum(preds == labels.data).double() / inputs.data.size(0))
 
             # Statistics
             running_loss += loss.data.item() * inputs.data.size(0)
@@ -222,3 +225,11 @@ for epoch in range(NUM_EPOCHS):
 
 time_elapsed = time.time() - since
 print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
+
+# Save train_batch_loss_history and train_batch_acc_history
+with open('./logs/train_batch_loss_history.txt', 'w') as f:
+    for item in train_batch_loss_history:
+        f.write("%s\n" % item)
+with open('./logs/train_batch_acc_history.txt', 'w') as f:
+    for item in train_batch_acc_history:
+        f.write("%s\n" % item)
