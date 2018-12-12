@@ -8,7 +8,7 @@ This repo introduces how to train ResNet models on CASIA_WEB_FACE and validate t
 * Linux, Windows or macOS
 * PyTorch (>=0.4)
 
-While not required, for optimal performance it is **highly** recommended to run the code using a CUDA enabled GPU. We used 4 GeForce GTX 1080Ti in parallel.
+While not required, for optimal performance it is **highly** recommended to run the code using a CUDA enabled GPU. We used 4 NVIDIA TITAN V in parallel.
 
 ### Data Preparation
 
