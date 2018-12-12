@@ -22,8 +22,10 @@ While not required, for optimal performance it is **highly** recommended to run 
 
 * Configurate your training and validation settings in 'config.py'. In our case: {SEED=1337, LR=0.001, TRAIN_BATCH_SIZE=256, VAL_BATCH_SIZE=1, NUM_EPOCHS=30, WEIGHT_DECAY=0.0005, RGB_MEAN=\[0.485, 0.456, 0.406\], RGB_STD=\[0.229, 0.224, 0.225\], MODEL_NAME='ResNet50', TRAIN_PATH='/home/zhaojian/zhaojian/DATA/CASIA_WEB_FACE_Aligned', VAL_PATH='/home/zhaojian/zhaojian/DATA/lfw_Aligned', PAIR_TEXT_PATH='/home/zhaojian/zhaojian/DATA/pairs.txt', FILE_EXT='jpg', OPTIM='Adam'}.
 
-* `mkdir models` to store the checkpoints.
+* `mkdir models logs` to store the checkpoints and logs.
 
 * Run the training script 'train.py' with `python train.py`, and your terminal will automatically display 'Epoch idx', 'Batch idx', 'Train Batch Loss', 'Train Batch Acc', 'Elapsed Time per Batch', 'Train Epoch Loss', 'Train Epoch Acc', 'Elapsed Time per Epoch','LFW VAL AUC', 'LFW VAL EER', 'Current Best val ROC AUC', 'Total Elapsed Time'.
 
 * The checkpoints will be stored in 'models/' as '{MODEL_NAME}_CASIA-WEB-FACE-Aligned_Epoch_{epoch}_LfwAUC_{best_roc_auc}.tar', including 'epoch', 'arch', 'optim_state_dict', 'model_state_dict', 'train_epoch_loss', 'train_epoch_acc', 'best_roc_auc'.
+
+* The training logs will be stored in 'logs/' as 'train_batch_loss_history_Aligned.txt' and 'train_batch_acc_history_Aligned.txt', including 'train_batch_loss_history' and 'train_batch_acc_history' for plotting curves.
