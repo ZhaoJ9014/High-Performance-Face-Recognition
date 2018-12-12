@@ -71,9 +71,20 @@ path_list, issame_list = utils.get_paths(VAL_PATH, pairs, FILE_EXT)
 val_loader = torch.utils.data.DataLoader(data_loader.LFWDataset(path_list, issame_list, val_transform), batch_size=VAL_BATCH_SIZE, shuffle=False)
 
 #======= Model & Optimizer =======#
-model = torchvision.models.resnet50(pretrained=True)
-if type(model.fc) == nn.modules.linear.Linear:
+if MODEL_NAME.lower()=='resnet18':
+    model = torchvision.models.resnet18(pretrained=True)
+elif MODEL_NAME.lower()=='resnet34':
+    model = torchvision.models.resnet34(pretrained=True)
+elif MODEL_NAME.lower()=='resnet50':
+    model = torchvision.models.resnet50(pretrained=True)
+elif MODEL_NAME.lower()=='resnet101':
+    model = torchvision.models.resnet101(pretrained=True)
+elif MODEL_NAME.lower()=='resnet152':
+    model = torchvision.models.resnet152(pretrained=True)
+else:
+    raise NotImplementedError('Model: ResNet-18, 34, 50, 101, 152')
 
+if type(model.fc) == nn.modules.linear.Linear:
     # Check if final fc layer sizes match num_class
     if not model.fc.weight.size()[0] == num_class:
 
