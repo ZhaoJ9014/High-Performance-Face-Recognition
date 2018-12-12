@@ -109,8 +109,6 @@ best_roc_auc = 0.0
 since = time.time()
 
 for epoch in range(NUM_EPOCHS):
-        print('Epoch {}/{}'.format(epoch, NUM_EPOCHS - 1))
-        print('-' * 10)
 
         since_epoch = time.time()
         running_loss = 0.0
@@ -123,7 +121,7 @@ for epoch in range(NUM_EPOCHS):
 
         # Iterate over data.
         for step, (inputs, labels) in enumerate(train_loader):
-            print('Batch {}/{}'.format(step, len(train_loader) - 1))
+            print('Epoch {}/{} Batch {}/{}'.format(epoch, NUM_EPOCHS - 1, step, len(train_loader) - 1))
             since_step = time.time()
 
             inputs = Variable(inputs).to(device)
