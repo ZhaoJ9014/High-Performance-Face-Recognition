@@ -30,4 +30,4 @@ While not required, for optimal performance it is **highly** recommended to run 
 
 * The training logs will be stored in 'logs/' as 'train_batch_loss_history_Aligned.txt' and 'train_batch_acc_history_Aligned.txt', including 'train_batch_loss_history' and 'train_batch_acc_history' for plotting curves.
 
-* TODO: Add Center Loss in the training script.
+* TODO: Add Center Loss in the training script to reduce intra-class distance and enlarge inter-class distance.
