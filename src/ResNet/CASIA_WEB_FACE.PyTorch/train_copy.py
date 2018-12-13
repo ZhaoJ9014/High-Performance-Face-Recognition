@@ -129,7 +129,7 @@ criterion_centerloss = CenterLoss(num_classes=num_class, feat_dim=2048, use_gpu=
 
 # Optimizer
 if cfg['OPTIM'].lower()=='adam':
-    optimizer_softmax = optim.Adam(model.parameters(), lr=cfg['LR'], weight_decay=cfg['WEIGHT_DECAY'])
+    optimizer_softmax = optim.Adam(model.parameters(), lr=LR_SOFTMAX, weight_decay=WEIGHT_DECAY)
     optimizer_center = optim.Adam(criterion_centerloss.parameters(), lr=LR_CENTER)
 else:
     raise NotImplementedError('Optimizer: Adam')
