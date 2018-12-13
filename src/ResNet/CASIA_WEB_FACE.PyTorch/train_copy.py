@@ -25,7 +25,9 @@ cfg = configurations[1]
 SEED = cfg['SEED']
 torch.manual_seed(SEED)
 
-LR = cfg['LR']
+LR_SOFTMAX = cfg['LR_SOFTMAX'] # LR for softmax loss
+LR_CENTER = cfg['LR_CENTER'] # LR for center loss
+ALPHA = cfg['ALPHA'] # Weight for center loss
 TRAIN_BATCH_SIZE = cfg['TRAIN_BATCH_SIZE']
 VAL_BATCH_SIZE = cfg['VAL_BATCH_SIZE']
 NUM_EPOCHS = cfg['NUM_EPOCHS']
@@ -108,9 +110,9 @@ criterion_softmax = nn.CrossEntropyLoss()
 criterion_softmax = criterion_softmax.to(device)
 
 # Center loss
-class InternalFeature(nn.Module):
+class CenterFeature(nn.Module):
     def __init__(self, submodule):
-        super(InternalFeature, self).__init__()
+        super(CenterFeature, self).__init__()
         self.submodule = submodule
         self.extracted_layer = ["avgpool"]
 
@@ -125,11 +127,10 @@ class InternalFeature(nn.Module):
 
 criterion_centerloss = CenterLoss(num_classes=num_class, feat_dim=2048, use_gpu=True)
 
-
 # Optimizer
 if cfg['OPTIM'].lower()=='adam':
-    optimizer_softmax = torch.optim.Adam(model.parameters(), lr=cfg['LR'], weight_decay=cfg['WEIGHT_DECAY'])
-    optimizer_center = torch.optim.Adam(criterion_centerloss.parameters(), lr=0.5)
+    optimizer_softmax = optim.Adam(model.parameters(), lr=cfg['LR'], weight_decay=cfg['WEIGHT_DECAY'])
+    optimizer_center = optim.Adam(criterion_centerloss.parameters(), lr=LR_CENTER)
 else:
     raise NotImplementedError('Optimizer: Adam')
 
@@ -170,12 +171,12 @@ for epoch in range(NUM_EPOCHS):
             _, preds = torch.max(outputs, 1)
 
             model_center = model.module
-            myexactor = InternalFeature(model_center)
-            features = myexactor(inputs)[0].squeeze()
-            features = F.normalize(features, p=2, dim=1)  # L2-normalize
-            loss_center = criterion_centerloss(features, labels)
+            myexactor = CenterFeature(model_center)
+            features_center = myexactor(inputs)[0].squeeze()
+            features_center = F.normalize(features_center, p=2, dim=1)  # L2-normalize
+            loss_center = criterion_centerloss(features_center, labels)
 
-            loss = loss_softmax + loss_center
+            loss = loss_softmax + loss_center * ALPHA
 
             # Zero the parameter gradients
             optimizer_softmax.zero_grad()
@@ -186,13 +187,13 @@ for epoch in range(NUM_EPOCHS):
 
             # multiple (1./alpha) in order to remove the effect of alpha on updating centers
             for param in criterion_centerloss.parameters():
-                param.grad.data *= (1. / 1)
+                param.grad.data *= (1. / ALPHA)
 
             optimizer_softmax.step()
             optimizer_center.step()
 
             time_elapsed = time.time() - since_step
-            print('Train Batch Loss: {:.4f} Train Batch Softmax Loss: {:.4f} Train Batch Center Loss: {:.4f} Acc: {:.4f} Elapsed: {:.0f}m {:.0f}s'.format(loss.data.item(), loss_softmax.data.item(), loss_center.data.item(), torch.sum(preds == labels.data).double() / inputs.data.size(0), time_elapsed // 60, time_elapsed % 60))
+            print('Train Batch Loss: {:.4f} Train Batch Softmax Loss: {:.4f} Train Batch Center Loss: {:.4f} Acc: {:.4f} Elapsed: {:.0f}m {:.0f}s'.format(loss.data.item(), loss_softmax.data.item(), loss_center.data.item() * 0.01, torch.sum(preds == labels.data).double() / inputs.data.size(0), time_elapsed // 60, time_elapsed % 60))
             train_batch_loss_history.append(loss.data.item())
             train_batch_acc_history.append(torch.sum(preds == labels.data).double() / inputs.data.size(0))
 
@@ -264,7 +265,8 @@ for epoch in range(NUM_EPOCHS):
             torch.save({
                 'epoch': epoch,
                 'arch': model.__class__.__name__,
-                'optim_state_dict': optimizer.state_dict(),
+                'optim_softmax_state_dict': optimizer_softmax.state_dict(),
+                'optim_center_state_dict': optimizer_center.state_dict(),
                 'model_state_dict': model.state_dict(),
                 'train_epoch_loss': epoch_loss,
                 'train_epoch_acc': epoch_acc,
@@ -276,9 +278,9 @@ time_elapsed = time.time() - since
 print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
 
 # Save train_batch_loss_history and train_batch_acc_history
-with open('./logs/train_batch_loss_history.txt', 'w') as f:
+with open('./logs/{}_train_batch_loss_history_Aligned.txt'.format(MODEL_NAME), 'w') as f:
     for item in train_batch_loss_history:
         f.write("%s\n" % item)
-with open('./logs/train_batch_acc_history.txt', 'w') as f:
+with open('./logs/{}_train_batch_acc_history_Aligned.txt'.format(MODEL_NAME), 'w') as f:
     for item in train_batch_acc_history:
         f.write("%s\n" % item)
