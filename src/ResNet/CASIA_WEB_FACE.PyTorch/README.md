@@ -32,4 +32,4 @@ While not required, for optimal performance it is **highly** recommended to run 
 
 * The training logs will be stored in 'logs/' as '{MODEL_NAME}_train_batch_loss_history_Aligned.txt' and '{MODEL_NAME}_train_batch_acc_history_Aligned.txt', including 'train_batch_loss_history' and 'train_batch_acc_history' for plotting curves.
 
-* TODO: Train & release the ResNet-50, 101, 152 models.
+* TODO: Train & release the ResNet-50, 101, 152 models trained on CASIA-WEB-FACE, VGGFACE2 and MS-Celeb-1M.
