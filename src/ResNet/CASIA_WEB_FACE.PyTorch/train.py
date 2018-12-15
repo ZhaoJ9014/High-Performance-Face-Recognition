@@ -99,10 +99,18 @@ class Net(nn.Module):
         self.num_class = num_class
         self.alpha_1 = alpha_1
         self.fc1 = nn.Linear(2048, FEAT_DIM)
+        nn.init.xavier_uniform_(self.fc1.weight)
+        if self.fc1.bias is not None:
+            nn.init.zeros_(self.fc1.bias)
         self.batch_norm = nn.BatchNorm2d(FEAT_DIM)
+        self.batch_norm.weight.data.fill_(1)
+        self.batch_norm.bias.data.zero_()
         self.relu = nn.ReLU(inplace=True)
         self.norm_feat = models.NormFeat()
         self.fc2 = nn.Linear(FEAT_DIM, self.num_class)
+        nn.init.xavier_uniform_(self.fc2.weight)
+        if self.fc1.bias is not None:
+            nn.init.zeros_(self.fc2.bias)
 
     def forward(self, x):
         batch_size = x.size(0)
