@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.optim import lr_scheduler
@@ -17,6 +18,7 @@ from scipy.optimize import brentq
 from scipy import interpolate
 from config import configurations
 from center_loss import CenterLoss
+import models
 
 #======= Parameters and DataLoaders =======#
 cfg = configurations[1]
@@ -27,6 +29,8 @@ torch.manual_seed(SEED)
 LR_SOFTMAX = cfg['LR_SOFTMAX'] # LR for softmax loss
 LR_CENTER = cfg['LR_CENTER'] # LR for center loss
 ALPHA = cfg['ALPHA'] # Weight for center loss
+FEAT_DIM = cfg['FEAT_DIM'] # Feature dimension for center loss
+ALPHA_1 = cfg['ALPHA_1'] # Weight for center loss latent features
 TRAIN_BATCH_SIZE = cfg['TRAIN_BATCH_SIZE']
 VAL_BATCH_SIZE = cfg['VAL_BATCH_SIZE']
 NUM_EPOCHS = cfg['NUM_EPOCHS']
@@ -74,30 +78,42 @@ val_loader = torch.utils.data.DataLoader(data_loader.LFWDataset(path_list, issam
 
 #======= Model & Loss & Optimizer =======#
 if MODEL_NAME.lower()=='resnet18':
-    model = torchvision.models.resnet18(pretrained=True)
+    backbone = torchvision.models.resnet18(pretrained=True)
 elif MODEL_NAME.lower()=='resnet34':
-    model = torchvision.models.resnet34(pretrained=True)
+    backbone = torchvision.models.resnet34(pretrained=True)
 elif MODEL_NAME.lower()=='resnet50':
-    model = torchvision.models.resnet50(pretrained=True)
+    backbone = torchvision.models.resnet50(pretrained=True)
 elif MODEL_NAME.lower()=='resnet101':
-    model = torchvision.models.resnet101(pretrained=True)
+    backbone = torchvision.models.resnet101(pretrained=True)
 elif MODEL_NAME.lower()=='resnet152':
-    model = torchvision.models.resnet152(pretrained=True)
+    backbone = torchvision.models.resnet152(pretrained=True)
 else:
     raise NotImplementedError('Model: ResNet-18, 34, 50, 101, 152')
 
-if type(model.fc) == nn.modules.linear.Linear:
-    # Check if final fc layer sizes match num_class
-    if not model.fc.weight.size()[0] == num_class:
+backbone = nn.Sequential(*list(backbone.children())[:-1])
 
-        # Replace last layer
-        print('The Original FC Layer: ', model.fc)
-        model.fc = nn.Linear(2048, num_class)
-        print('is Replaced with A New One: ', model.fc)
-    else:
-        pass
-else:
-    pass
+class Net(nn.Module):
+    def __init__(self, backbone, num_class, alpha_1):
+        super(Net, self).__init__()
+        self.backbone = backbone
+        self.num_class = num_class
+        self.alpha_1 = alpha_1
+        self.fc1 = nn.Linear(2048, FEAT_DIM)
+        self.batch_norm = nn.BatchNorm2d(FEAT_DIM)
+        self.relu = nn.ReLU(inplace=True)
+        self.norm_feat = models.NormFeat()
+        self.fc2 = nn.Linear(FEAT_DIM, self.num_class)
+
+    def forward(self, x):
+        batch_size = x.size(0)
+        x = self.backbone(x).view(batch_size, -1)
+        x = self.fc1(x).unsqueeze(dim=2).unsqueeze(dim=3)
+        x = self.relu(self.batch_norm(x))
+        feat = self.norm_feat(x).squeeze() * self.alpha_1
+        out = self.fc2(feat)
+        return feat, out
+
+model = Net(backbone, num_class, ALPHA_1)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 if torch.cuda.device_count() > 1:
@@ -108,23 +124,7 @@ model.to(device)
 criterion_softmax = nn.CrossEntropyLoss()
 criterion_softmax = criterion_softmax.to(device)
 
-# Center loss
-class CenterFeature(nn.Module):
-    def __init__(self, submodule):
-        super(CenterFeature, self).__init__()
-        self.submodule = submodule
-        self.extracted_layer = ["avgpool"]
-
-    def forward(self, x):
-        outputs = []
-        for name, module in self.submodule._modules.items():
-            if name is "fc": x = x.view(x.size(0), -1)
-            x = module(x)
-            if name in self.extracted_layer:
-                outputs.append(x)
-        return outputs
-
-criterion_centerloss = CenterLoss(num_classes=num_class, feat_dim=2048, use_gpu=True)
+criterion_centerloss = CenterLoss(num_classes=num_class, feat_dim=FEAT_DIM, use_gpu=True)
 
 # Optimizer
 if cfg['OPTIM'].lower()=='adam':
@@ -165,15 +165,11 @@ for epoch in range(NUM_EPOCHS):
             # Forward
             # Track history if only in train
             # Get model outputs and calculate loss
-            outputs = model(inputs)
+            feat_center, outputs = model(inputs)
             loss_softmax = criterion_softmax(outputs, labels)
             _, preds = torch.max(outputs, 1)
 
-            model_center = model.module
-            myexactor = CenterFeature(model_center)
-            features_center = myexactor(inputs)[0].squeeze()
-            features_center = F.normalize(features_center, p=2, dim=1)  # L2-normalize
-            loss_center = criterion_centerloss(features_center, labels)
+            loss_center = criterion_centerloss(feat_center, labels)
 
             loss = loss_softmax + loss_center * ALPHA
 
@@ -212,94 +208,10 @@ for epoch in range(NUM_EPOCHS):
         model_eval.eval()
 
         # Feature extraction
-        # Convert the trained network into a "feature extractor"
-        extractor = nn.Sequential(*list(model_eval.children())[:-1])
         features = []
         for batch_idx, images in tqdm.tqdm(enumerate(val_loader), total=len(val_loader), desc='Extracting features'):
             x = Variable(images).to(device) # Test-time memory conservation
-            feat = extractor(x).data.cpu()
-            features.append(feat)
-        features = torch.stack(features)
-        sz = features.size()
-
-        features = features.view(sz[0] * sz[1], sz[2])
-        features = F.normalize(features, p=2, dim=1)  # L2-normalize
-        # Verification
-        num_feat = features.size()[0]
-        feat_pair1 = features[np.arange(0, num_feat, 2), :]
-        feat_pair2 = features[np.arange(1, num_feat, 2), :]
-        feat_dist = (feat_pair1 - feat_pair2).norm(p=2, dim=1)
-        feat_dist = feat_dist.numpy()
-
-        # Eval metrics
-        scores = -feat_dist
-        gt = np.asarray(issame_list)
-
-        # 10 fold
-        fold_size = 600  # 600 pairs in each fold
-        roc_auc = np.zeros(10)
-        roc_eer = np.zeros(10)
-
-        for i in tqdm.tqdm(range(10)):
-            start = i * fold_size
-            end = (i + 1) * fold_size
-            scores_fold = scores[start:end]
-            gt_fold = gt[start:end]
-            roc_auc[i] = sklearn.metrics.roc_auc_score(gt_fold, scores_fold)
-            fpr, tpr, _ = sklearn.metrics.roc_curve(gt_fold, scores_fold)
-
-            # EER calc: https://yangcha.github.io/EER-ROC/
-            roc_eer[i] = brentq(
-                lambda x: 1. - x - interpolate.interp1d(fpr, tpr)(x), 0., 1.)
-
-        print(('LFW VAL AUC: %0.4f +/- %0.4f, LFW VAL EER: %0.4f +/- %0.4f') % (np.mean(roc_auc), np.std(roc_auc), np.mean(roc_eer), np.std(roc_eer)))
-        epoch_val_roc_auc = np.mean(roc_auc)
-        epoch_val_roc_eer = np.mean(roc_eer)
-
-        if epoch_val_roc_auc > best_roc_auc:
-            best_roc_auc = epoch_val_roc_auc
-            best_model_wts = copy.deepcopy(model.state_dict())
-
-            # Save checkpoint
-            torch.save({
-                'epoch': epoch,
-                'arch': model.__class__.__name__,
-                'optim_softmax_state_dict': optimizer_softmax.state_dict(),
-                'optim_center_state_dict': optimizer_center.state_dict(),
-                'model_state_dict': model.state_dict(),
-                'train_epoch_loss': epoch_loss,
-                'train_epoch_acc': epoch_acc,
-                'best_roc_auc': best_roc_auc,
-            }, './models/{}_CASIA-WEB-FACE-Aligned_Epoch_{}_LfwAUC_{}.tar'.format(MODEL_NAME, epoch, best_roc_auc))
-        print('Current Best val ROC AUC: {:4f}'.format(best_roc_auc))
-
-time_elapsed = time.time() - since
-print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
-
-# Save train_batch_loss_history and train_batch_acc_history
-with open('./logs/{}_train_batch_loss_history_Aligned.txt'.format(MODEL_NAME), 'w') as f:
-    for item in train_batch_loss_history:
-        f.write("%s\n" % item)
-with open('./logs/{}_train_batch_acc_history_Aligned.txt'.format(MODEL_NAME), 'w') as f:
-    for item in train_batch_acc_history:
-        f.write("%s\n" % item)en(train_loader.dataset)
-        epoch_acc = running_corrects.double() / len(train_loader.dataset)
-
-        time_elapsed = time.time() - since_epoch
-        print('Train Epoch Loss: {:.4f} Acc: {:.4f} Elapsed: {:.0f}m {:.0f}s'.format(epoch_loss, epoch_acc, time_elapsed // 60, time_elapsed % 60))
-
-        # Set model to evaluate mode
-        model_eval = model.module  # get network module from inside its DataParallel wrapper
-        model_eval = model_eval.to(device)
-        model_eval.eval()
-
-        # Feature extraction
-        # Convert the trained network into a "feature extractor"
-        extractor = nn.Sequential(*list(model_eval.children())[:-1])
-        features = []
-        for batch_idx, images in tqdm.tqdm(enumerate(val_loader), total=len(val_loader), desc='Extracting features'):
-            x = Variable(images).to(device) # Test-time memory conservation
-            feat = extractor(x).data.cpu()
+            feat, _ = model_eval(x).data.cpu()
             features.append(feat)
         features = torch.stack(features)
         sz = features.size()
