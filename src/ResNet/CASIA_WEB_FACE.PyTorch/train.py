@@ -29,8 +29,8 @@ torch.manual_seed(SEED)
 LR_SOFTMAX = cfg['LR_SOFTMAX'] # LR for softmax loss
 LR_CENTER = cfg['LR_CENTER'] # LR for center loss
 ALPHA = cfg['ALPHA'] # Weight for center loss
-FEAT_DIM = cfg['FEAT_DIM'] # Feature dimension for center loss
-ALPHA_1 = cfg['ALPHA_1'] # Weight for center loss latent features
+FEAT_DIM = cfg['FEAT_DIM'] # Feature dimension for bottleneck layer (feature extraction & center loss computation)
+ALPHA_1 = cfg['ALPHA_1'] # Weight for latent features used for center loss computation
 TRAIN_BATCH_SIZE = cfg['TRAIN_BATCH_SIZE']
 VAL_BATCH_SIZE = cfg['VAL_BATCH_SIZE']
 NUM_EPOCHS = cfg['NUM_EPOCHS']
