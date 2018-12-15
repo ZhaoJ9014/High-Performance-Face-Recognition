@@ -2,7 +2,7 @@
 
 This repo introduces how to train ResNet models on CASIA_WEB_FACE with Softmax Loss & Center loss and validate the models on LFW using PyTorch. 
 
-Since this repo has included many useful information & tricks in PyTorch, e.g., build your own data loader, random sampling for reducing class imbalance issue, on-the-fly data aumentation, define/train/finetune your model with pre-trained weights and newly added layers, weight initialization, multi-task learning (multiple loss function optimization), feature extraction, evaluation, etc., with this repo as an example, you can alternatively train and test any models on any datasets for the tasks of classification and recognition.
+Since this repo has included many useful information & tricks in PyTorch, *e.g.*, build your own data loader, random sampling for reducing class imbalance issue, on-the-fly data aumentation, define/train/finetune your model with pre-trained weights and newly added layers, weight initialization, multi-task learning (multiple loss function optimization), feature extraction, evaluation, *etc.*, with this repo as an example, you can alternatively train and test any models on any datasets for the tasks of classification and recognition.
 
 ### Pre-requisites
 
@@ -22,7 +22,7 @@ While not required, for optimal performance it is **highly** recommended to run 
 
 ##### Training
 
-* Configurate your training and validation settings in 'config.py'. In our case: {SEED=1337, LR_SOFTMAX=0.001, LR_CENTER=0.001, ALPHA=0.02, FEAT_DIM=256, ALPHA_1=10,TRAIN_BATCH_SIZE=256, VAL_BATCH_SIZE=1, NUM_EPOCHS=100, WEIGHT_DECAY=0.0005, RGB_MEAN=\[0.485, 0.456, 0.406\], RGB_STD=\[0.229, 0.224, 0.225\], MODEL_NAME='ResNet50', TRAIN_PATH='/home/zhaojian/zhaojian/DATA/CASIA_WEB_FACE_Aligned', VAL_PATH='/home/zhaojian/zhaojian/DATA/lfw_Aligned', PAIR_TEXT_PATH='/home/zhaojian/zhaojian/DATA/pairs.txt', FILE_EXT='jpg', OPTIM='Adam'}.
+* Configurate your training and validation settings in 'config.py'. In our case: {SEED=1337, LR_SOFTMAX=0.001 (LR for softmax loss), LR_CENTER=0.001 (LR for center loss), ALPHA=0.02 (Weight for center loss), FEAT_DIM=256 (Feature dimension for center loss), ALPHA_1=10 (Weight for center loss latent features),TRAIN_BATCH_SIZE=256, VAL_BATCH_SIZE=1, NUM_EPOCHS=100, WEIGHT_DECAY=0.0005, RGB_MEAN=\[0.485, 0.456, 0.406\], RGB_STD=\[0.229, 0.224, 0.225\], MODEL_NAME='ResNet50', TRAIN_PATH='/home/zhaojian/zhaojian/DATA/CASIA_WEB_FACE_Aligned', VAL_PATH='/home/zhaojian/zhaojian/DATA/lfw_Aligned', PAIR_TEXT_PATH='/home/zhaojian/zhaojian/DATA/pairs.txt', FILE_EXT='jpg', OPTIM='Adam'}.
 
 * `mkdir models logs` to store the checkpoints and logs.
 
