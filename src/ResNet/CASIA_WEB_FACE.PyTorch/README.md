@@ -1,8 +1,8 @@
 # Training ResNet on CASIA_WEB_FACE with Softmax Loss & Center loss and Validating Models on LFW with PyTorch
 
-This repo introduces how to train ResNet models on CASIA_WEB_FACE with Softmax Loss & Center loss and validate the models on LFW using PyTorch. 
+:triangular_flag_on_post: This repo introduces how to train ResNet models on CASIA_WEB_FACE with Softmax Loss & Center loss and validate the models on LFW using PyTorch. 
 
-Since this repo has included many useful information & tricks in PyTorch, *e.g.*, build your own data loader, random sampling for reducing class imbalance issue, on-the-fly data aumentation, define/train/finetune your model with pre-trained weights and newly added layers, weight initialization, multi-task learning (multiple loss function optimization), feature extraction, evaluation, *etc.*, with this repo as an example, you can alternatively train and test any models on any datasets for the tasks of classification and recognition.
+:triangular_flag_on_post: Since this repo has included many useful information & tricks in PyTorch, *e.g.*, build your own data loader, random sampling for reducing class imbalance issue, on-the-fly data aumentation, define/train/finetune your model with pre-trained weights and newly added layers, weight initialization, multi-task learning (multiple loss function optimization), feature extraction, evaluation, *etc.*, with this repo as an example, you can alternatively train and test any models on any datasets for the tasks of classification and recognition.
 
 ### Pre-requisites
 
