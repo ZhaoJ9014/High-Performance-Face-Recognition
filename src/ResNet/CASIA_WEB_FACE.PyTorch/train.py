@@ -242,7 +242,8 @@ for epoch in range(NUM_EPOCHS):
         features = []
         for batch_idx, images in tqdm.tqdm(enumerate(val_loader), total=len(val_loader), desc='Extracting features'):
             x = Variable(images).to(device) # Test-time memory conservation
-            feat, _ = model_eval(x).data.cpu()
+            feat, _ = model_eval(x)
+            feat = feat.data.cpu()
             features.append(feat)
         features = torch.stack(features)
         features = F.normalize(features, p=2, dim=1)  # L2-normalize
