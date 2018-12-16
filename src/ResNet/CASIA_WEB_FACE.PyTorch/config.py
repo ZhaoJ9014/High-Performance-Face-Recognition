@@ -3,8 +3,9 @@ configurations = {
     1: dict(
         SEED=1337,
         LR_SOFTMAX=0.001,
+        FLAG_CENTER=False,
         LR_CENTER=0.001,
-        ALPHA = 0.03,
+        ALPHA = 0.02,
         FEAT_DIM = 256,
         ALPHA_1 = 10,
         TRAIN_BATCH_SIZE=256,
