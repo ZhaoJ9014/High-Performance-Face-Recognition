@@ -1,15 +1,13 @@
 # Face Alignment and Resize with Padding with PyTorch
 
-This repo provides a easy-to-use helper function for accurate face alignment & resize with padding using PyTorch.
+This repo provides a easy-to-use helper function for face alignment & resize with padding using PyTorch.
 
 ### Pre-requisites
 
 * Python 3.5+ or Python 2.7 (it may work with other versions too)
 * Linux, Windows or macOS
 * PyTorch (>=0.4)
-* [Facial Landmark Localization Tool](https://arxiv.org/pdf/1703.07332.pdf) (Install: `pip install face-alignment` or `conda install -c 1adrianb face_alignment`; Refer to this [repo](https://github.com/1adrianb/face-alignment) for more details.)
-
-While not required, for optimal performance(especially for the detector) it is **highly** recommended to run the code using a CUDA enabled GPU.
+* [MTCNN Facial Landmark Localization Tool](https://arxiv.org/pdf/1604.02878.pdf) (Install: `pip install face-alignment` or `conda install -c 1adrianb face_alignment`; Refer to this [repo](https://github.com/1adrianb/face-alignment) for more details.)
 
 ### Usage
 
