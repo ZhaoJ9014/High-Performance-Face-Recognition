@@ -16,7 +16,11 @@ for subfolder in os.listdir(source_root):
     for image_name in os.listdir(os.path.join(source_root, subfolder)):
             print("Processing\t{}".format(os.path.join(source_root, subfolder, image_name)))
             img = Image.open(os.path.join(source_root, subfolder, image_name))
-            _, landmarks = detect_faces(img)
+            try:
+                _, landmarks = detect_faces(img)
+            except Exception:
+                print("{} is discarded!".format(os.path.join(source_root, subfolder, image_name)))
+                continue
             if len(landmarks) == 0: # If the landmarks cannot be detected, the img will be discarded 
                 continue
             facial5points = [[landmarks[0][j], landmarks[0][j + 5]] for j in range(5)]
