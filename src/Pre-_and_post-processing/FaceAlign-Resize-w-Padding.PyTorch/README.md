@@ -1,6 +1,6 @@
 # Face Alignment and Resize with Padding with PyTorch
 
-This repo provides a easy-to-use helper function for face alignment & resize with padding using PyTorch.
+:triangular_flag_on_post: This repo provides a easy-to-use helper function for face alignment & resize with padding using PyTorch.
 
 ### Pre-requisites
 
@@ -12,5 +12,5 @@ This repo provides a easy-to-use helper function for face alignment & resize wit
 ### Usage
 
 * Organize the face images of different identities for processing under the folder 'test'. Modify the paths if needed.
-* Run 'face_align.py' as an example to investigate how to predict 5 faical key points, align face images and resize face images with padding.
+* Run `face_align.py` as an example to investigate how to predict 5 faical key points, align face images and resize face images with padding.
 * The aligned and resized face images will be automatically stored to the folder 'test_aligned', the subfolder names and image names remain unchanged. Modify the paths if needed.
