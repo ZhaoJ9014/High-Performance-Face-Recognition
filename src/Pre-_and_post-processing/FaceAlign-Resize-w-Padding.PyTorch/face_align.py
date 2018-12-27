@@ -16,7 +16,7 @@ for subfolder in os.listdir(source_root):
     for image_name in os.listdir(os.path.join(source_root, subfolder)):
             print("Processing\t{}".format(os.path.join(source_root, subfolder, image_name)))
             img = Image.open(os.path.join(source_root, subfolder, image_name))
-            try:
+            try: # Handle exception
                 _, landmarks = detect_faces(img)
             except Exception:
                 print("{} is discarded!".format(os.path.join(source_root, subfolder, image_name)))
