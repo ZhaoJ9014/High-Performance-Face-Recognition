@@ -4,8 +4,8 @@ from align_trans import get_reference_facial_points, warp_and_crop_face
 import numpy as np
 import os
 
-source_root = './test'
-dest_root = './test_aligned'
+source_root = './test' # Modify to your source dir
+dest_root = './test_aligned' # Modify to your destination dir
 reference = get_reference_facial_points(default_square = True)
 if not os.path.isdir(dest_root):
     os.mkdir(dest_root)
@@ -13,7 +13,7 @@ if not os.path.isdir(dest_root):
 def align(img):
     _, landmarks = detect_faces(img)
     facial5points = [[landmarks[0][j], landmarks[0][j + 5]] for j in range(5)]
-    warped_face = warp_and_crop_face(np.array(img), facial5points, reference, crop_size=(112, 112))
+    warped_face = warp_and_crop_face(np.array(img), facial5points, reference, crop_size=(112, 112)) # Modidy the crop_size according to your case 
     return Image.fromarray(warped_face)
 
 for subfolder in os.listdir(source_root):
