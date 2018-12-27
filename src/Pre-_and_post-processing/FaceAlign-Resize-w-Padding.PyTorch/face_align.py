@@ -17,7 +17,7 @@ for subfolder in os.listdir(source_root):
             print("Processing\t{}".format(os.path.join(source_root, subfolder, image_name)))
             img = Image.open(os.path.join(source_root, subfolder, image_name))
             _, landmarks = detect_faces(img)
-            if len(landmarks) != 1: # If the landmarks cannot be detected or more than 1 faces are detected, the img will be discarded 
+            if len(landmarks) == 0: # If the landmarks cannot be detected, the img will be discarded 
                 continue
             facial5points = [[landmarks[0][j], landmarks[0][j + 5]] for j in range(5)]
             warped_face = warp_and_crop_face(np.array(img), facial5points, reference, crop_size=(112, 112)) # Modidy the crop_size according to your case 
