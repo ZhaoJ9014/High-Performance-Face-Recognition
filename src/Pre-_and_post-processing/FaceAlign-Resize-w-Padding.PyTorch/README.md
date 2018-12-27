@@ -12,10 +12,5 @@ This repo provides a easy-to-use helper function for face alignment & resize wit
 ### Usage
 
 * Organize the face images of different identities for processing under the folder 'test'. Modify the paths if needed.
-* Run 'face_norm.py' as an example to investigate how to call 'face_alignment' for predicting 68 faical key points, 'FaceAligner' for aligning face images, and 'FaceResizer' for resizing face images with padding.
-* For usage with GPUs, replace 'predictor = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False, device='cpu').get_landmarks' with 'predictor = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False).get_landmarks' in 'face_norm.py'.
+* Run 'face_align.py' as an example to investigate how to predict 5 faical key points, align face images and resize face images with padding.
 * The aligned and resized face images will be automatically stored to the folder 'test_aligned', the subfolder names and image names remain unchanged. Modify the paths if needed.
-
-<p align='center'>
-<img src='pub/results.png' title='Examples for Face Alignment and Resize with Padding' style='max-width:600px'></img>
-</p>
