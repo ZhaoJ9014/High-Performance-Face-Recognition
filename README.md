@@ -30,6 +30,15 @@ This repository provides several high performance models for unconstrained / lar
 - Please refer to "./src/" and this [link](https://drive.google.com/drive/folders/15L-macCtlFDondqbDDoZFcz1Qe9bLqH4?usp=sharing) to access our full source codes and models (continue to update).
 
 
+****
+### Donation 
+:moneybag:
+
+* Your donation is highly welcomed to help us further develop High-Performance-Face-Recognition to better facilitate more cutting-edge researches and applications on facial analytics and human-centric multi-media understanding. The donation QR code via Wechat is as below. Appreciate it very much:heart:
+ 
+  <img src="https://github.com/ZhaoJ9014/High-Performance-Face-Recognition/blob/master/src/Donation.jpeg" width="200px"/>
+
+
 ### Citation
 - Please consult and consider citing the following papers:
 
